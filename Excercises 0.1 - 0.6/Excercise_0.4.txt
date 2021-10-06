@@ -1,0 +1,53 @@
+title New Note
+
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+Server->Browser: HTML-code
+Browser->Server: HTML GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server->Browser: main.css
+Browser->Server: HTML GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server->Browser: main.js
+
+note over Browser: 
+broser starts executing js-code
+that requests JSON data from server
+end note 
+
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server->Browser: data.json
+
+note over Browser: 
+browser executes the event handler
+that renders notes to display
+end note 
+
+note over Browser: 
+browser requests the list of notes from the page
+using the DOM-API and documents object
+end note
+
+note over Browser:
+browser creates a new list item element (li)
+using the createElement method of document object
+end note 
+
+note over Browser:
+browser adds text input from the form and adds it 
+to the new list item element using the textContent
+method of document object
+end note 
+
+note over Browser: 
+browser now adds the new list element to the list of 
+notes originally requested. 
+end note 
+
+
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note with added list item text
+Server->Browser: new_note.html
+Browser->Server: HTML GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server->Browser: main.css
+Browser->Server: HTML GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server->Browser: main.js
+
+Browser->Server: HTML GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server->Browser: data.json
