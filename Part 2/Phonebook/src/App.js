@@ -51,7 +51,7 @@ const App = () => {
 
       const updateContact = id => {
         const updateContactObject = persons.find(n => n.id === id)
-        const url = `http://localhost:3001/persons/${id}`
+        const url = `http://localhost:3001/api/persons/${id}`
         const changedContact = {...updateContactObject, number: newNumber}
         axios.put(url, changedContact).then(response => {
           setPersons(persons.map((contact) => contact.id !== id ? contact: response.data))
