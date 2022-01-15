@@ -40,7 +40,6 @@ const App = () => {
   const addContact = (event) => {
     event.preventDefault()
     const contactObject = {
-      id: newPerson,
       name: newPerson,
       number: newNumber
     }
@@ -50,6 +49,7 @@ const App = () => {
       let dupeNum = numArray.includes(contactObject.number)
 
       const updateContact = id => {
+        console.log(id)
         const updateContactObject = persons.find(n => n.id === id)
         const url = `http://localhost:3001/api/persons/${id}`
         const changedContact = {...updateContactObject, number: newNumber}
@@ -61,7 +61,9 @@ const App = () => {
       
       if (dupeStatus === true && dupeNum === false){
         window.confirm(`"${contactObject.name}" is already included in this phonebook, update existing entry with new number?`) //string literals use ` not '
-        updateContact(contactObject.id)
+        let specificId = persons.find(n => n.name === contactObject.name)
+        console.log('specificId:', specificId)
+        updateContact(specificId.id)
         setNewPerson('')
         setNewNumber('')
 
@@ -91,8 +93,9 @@ const App = () => {
       personsService
         .getAll()
         .then(response => {setPersons(response.data)})
+        console.log(persons)
     }, [])
-
+    
 /// EVENT HANDLERS ///
   const handlePersonChange = (event) => {
     setNewPerson(event.target.value)
