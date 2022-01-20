@@ -1,0 +1,9 @@
+post http://localhost:3003/blogs
+Content-Type: application/json
+
+{
+    "title": "TestBlog FromVSCode", 
+    "author": "Joe", 
+    "url": "http://testurl.io",
+    "likes": 123
+}

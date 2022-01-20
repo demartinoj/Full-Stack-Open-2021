@@ -54,6 +54,7 @@ const App = () => {
         personsService
           .create(contactObject)
           .then(console.log('contact added successfully'))
+          .catch(error => {window.confirm(error.response.data)})
         setPersons(persons.concat(contactObject))
         setNewPerson('')
         setNewNumber('')

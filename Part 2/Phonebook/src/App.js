@@ -79,6 +79,12 @@ const App = () => {
           .then(setTimeout(() => {
             setAddBanner('')}, 3000
          ) )
+          .catch(error => {
+            setAddBanner(error.response.data)
+            // setTimeout(() => {
+            //   setAddBanner(error.response.data)}, 3000)
+            // .then(setAddBanner(''))
+          })
         setPersons(persons.concat(contactObject))
         setNewPerson('')
         setNewNumber('')
@@ -114,6 +120,7 @@ const App = () => {
 /// RETURN RENDERING ///
   return(<div>
     <h1> Phonebook </h1>
+   
       <Banner message={addBanner}/>
       <Forms 
         query = {query}
